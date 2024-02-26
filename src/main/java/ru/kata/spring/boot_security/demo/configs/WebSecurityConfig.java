@@ -65,8 +65,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         User admin = new User("Admin", "123", "admin@mail.ru", 18);
         User user2 = new User("qwerty", "123", "qwerty@mail.ru", 18);
 
-        Role roleUser = roleService.getByRoleName("USER");
-        Role roleAdmin = roleService.getByRoleName("ADMIN");
+        Role roleUser = roleService.getByRoleName("ROLE_USER");
+        Role roleAdmin = roleService.getByRoleName("ROLE_ADMIN");
 
         user.setRoles(Set.of(roleUser));
         admin.setRoles(Set.of(roleUser, roleAdmin));

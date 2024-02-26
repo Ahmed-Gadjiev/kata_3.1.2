@@ -26,7 +26,7 @@
     <input type="password" th:field="*{password}">
     <br><br>
     <label>Роль: </label>
-    <select name="role">
+    <select multiple name="role">
         <option th:each="role : ${roles}" th:text="${role.getName()}"></option>
     </select>
 

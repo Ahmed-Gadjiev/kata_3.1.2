@@ -49,15 +49,6 @@ public class UserService implements UserDetailsService {
     public void update(Long id, User user) {
         User oldUser = userDao.getById(id);
 
-
-//        oldUser.setId(user.getId());
-//        oldUser.setRoles(user.getRoles());
-//        oldUser.setUsername(user.getUsername());
-//
-//        oldUser.setPassword(
-//                bCryptPasswordEncoder.encode(user.getPassword())
-//        );
-
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 
         userDao.update(id, user);

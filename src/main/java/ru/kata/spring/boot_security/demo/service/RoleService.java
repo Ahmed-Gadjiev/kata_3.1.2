@@ -20,6 +20,10 @@ public class RoleService {
         return roleDao.getByRoleName(roleName);
     }
 
+    public Role getById(Long id) {
+        return roleDao.getById(id);
+    }
+
     public List<Role> getAll() {
         return roleDao.getAll();
     }

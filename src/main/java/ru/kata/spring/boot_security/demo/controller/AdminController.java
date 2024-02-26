@@ -9,6 +9,7 @@ import ru.kata.spring.boot_security.demo.service.RoleService;
 import ru.kata.spring.boot_security.demo.service.UserService;
 
 import javax.validation.Valid;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -45,18 +46,14 @@ public class AdminController {
         if (user.getId() != null) {
             userService.update(user.getId(), user);
         } else {
+            String[] rolesStr = role.split(",");
+            Set<Role> roles = new HashSet<>();
 
-            if (role.equals("ROLE_ADMIN")){
-                user.setRoles(Set.of(
-                        roleService.getByRoleName("ADMIN"),
-                        roleService.getByRoleName("USER")
-                ));
-            } else {
-                user.setRoles(Set.of(
-                        roleService.getByRoleName("USER")
-                ));
+            for (String s : rolesStr) {
+                roles.add(roleService.getByRoleName(s));
             }
 
+            user.setRoles(roles);
             userService.save(user);
         }
 
